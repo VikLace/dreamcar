@@ -18,6 +18,7 @@ export interface ICar{
   seatingCapacity: number;
   cargoVolume: number; //litres
 
+  driveWheelConfiguration: string;
   vehicleTransmission: string;
   numberOfForwardGears: number;
   accelerationTime: number; //seconds
