@@ -1,4 +1,9 @@
-export interface ICar{
+import { BodyType } from "../enums/body-type.enum";
+import { DriveWheelConfiguration } from "../enums/drive-wheel-configuration.enum";
+import { FuelType } from "../enums/fuel-type.enum";
+import { Transmission } from "../enums/transmission.enum";
+
+export interface Car{
   brand: string;
   manufacturer: string;
   name: string;
@@ -9,7 +14,7 @@ export interface ICar{
   outerLink: string;
   description: string;
 
-  bodyType: string;
+  bodyType: BodyType;
   height: number; //centimeters
   width: number; //centimeters
   wheelbase: number; //centimeters
@@ -18,8 +23,8 @@ export interface ICar{
   seatingCapacity: number;
   cargoVolume: number; //litres
 
-  driveWheelConfiguration: string;
-  vehicleTransmission: string;
+  driveWheelConfiguration: DriveWheelConfiguration;
+  transmission: Transmission;
   numberOfForwardGears: number;
   accelerationTime: number; //seconds
   speed: number; //hm/h
@@ -27,10 +32,9 @@ export interface ICar{
   enginePower: number; //HP
   torque: number; //Nm
 
-  fuelType: string;
+  fuelType: FuelType;
   fuelCapacity: number; //litres
   fuelConsumption: number; //litres/100km
-
   emissionsCO2: number; //g/km
   meetsEmissionStandard: string;
 }
