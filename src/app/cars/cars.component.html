@@ -1,1 +1,41 @@
-<p>cars works!</p>
+<img src="{{car.image}}" width="400" height="220"/>
+<hr/>
+<h2>{{car.brand}}</h2>
+<h3>{{car.name}}</h3>
+<hr/>
+<div>
+<h4>Body</h4>
+<ul>
+  <li>body type: {{car.bodyType}}</li>
+  <li>height: {{car.height}}cm</li>
+  <li>width: {{car.width}}cm</li>
+  <li>wheelbase: {{car.wheelbase}}cm</li>
+  <li>weight: {{car.weight}}kg</li>
+  <li>number of doors: {{car.numberOfDoors}}</li>
+  <li>seating capacity: {{car.seatingCapacity}}</li>
+  <li>cargo volume: {{car.cargoVolume}}l</li>
+</ul>
+</div>
+<div>
+<h4>Drive</h4>
+<ul>
+  <li>drive wheel configuration: {{car.driveWheelConfiguration}}</li>
+  <li>transmission: {{car.transmission}}</li>
+  <li>number of forward gears: {{car.numberOfForwardGears}}</li>
+  <li>acceleration time: {{car.accelerationTime}}sec.</li>
+  <li>top speed: {{car.speed}}km/h</li>
+  <li>engine displacement: {{car.engineDisplacement}}cm3</li>
+  <li>engine power: {{car.enginePower}}HP</li>
+  <li>torque: {{car.torque}}Nm</li>
+</ul>
+</div>
+<div>
+<h4>Fuel</h4>
+<ul>
+  <li>fuel type: {{car.fuelType}}</li>
+  <li>fuel capacity: {{car.fuelCapacity}}l</li>
+  <li>fuel consumption: {{car.fuelConsumption}}l/100km</li>
+  <li>emissions CO2: {{car.emissionsCO2}}g/km</li>
+  <li>meets emission standard: {{car.meetsEmissionStandard}}</li>
+</ul>
+</div>
