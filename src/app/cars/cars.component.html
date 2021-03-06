@@ -1,6 +1,5 @@
-<img src="{{car.image}}" width="400" height="220"/>
+<!--img src="{{car.image}}" width="400" height="220"/>
 <hr/>
-<h2>{{car.brand}}</h2>
 <h3>{{car.name}}</h3>
 <hr/>
 <div>
@@ -38,4 +37,9 @@
   <li>emissions CO2: {{car.emissionsCO2}}g/km</li>
   <li>meets emission standard: {{car.meetsEmissionStandard}}</li>
 </ul>
-</div>
+</div-->
+<ul>
+  <li *ngFor="let car of cars">
+    {{car.id}}: {{car.name}}
+  </li>
+</ul>
