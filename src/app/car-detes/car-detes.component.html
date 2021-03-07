@@ -1,0 +1,43 @@
+<button (click)="goBack()">go back</button>
+<div *ngIf="car">
+  <!--img src="{{car.image}}" width="400" height="220"/>
+  <hr/-->
+  <h3>{{car.name}}</h3>
+  <hr/>
+  <div>
+  <h4>Body</h4>
+  <ul>
+    <li>body type: <strong>{{car.bodyType}}</strong></li>
+    <li>height: <strong>{{car.height}}</strong> cm</li>
+    <li>width: <strong>{{car.width}}</strong> cm</li>
+    <li>wheelbase: <strong>{{car.wheelbase}}</strong> cm</li>
+    <li>weight: <strong>{{car.weight}}</strong> kg</li>
+    <li>number of doors: <strong>{{car.numberOfDoors}}</strong></li>
+    <li>seating capacity: <strong>{{car.seatingCapacity}}</strong></li>
+    <li>cargo volume: <strong>{{car.cargoVolume}}</strong> l</li>
+  </ul>
+  </div>
+  <div>
+  <h4>Drive</h4>
+  <ul>
+    <li>drive wheel configuration: <strong>{{car.driveWheelConfiguration}}</strong></li>
+    <li>transmission: <strong>{{car.transmission}}</strong></li>
+    <li>number of forward gears: <strong>{{car.numberOfForwardGears}}</strong></li>
+    <li>acceleration time: <strong>{{car.accelerationTime}}</strong> sec</li>
+    <li>top speed: <strong>{{car.speed}}</strong> km/h</li>
+    <li>engine displacement: <strong>{{car.engineDisplacement}}</strong> cm3</li>
+    <li>engine power: <strong>{{car.enginePower}}</strong> HP</li>
+    <li>torque: <strong>{{car.torque}}</strong> Nm</li>
+  </ul>
+  </div>
+  <div>
+  <h4>Fuel</h4>
+  <ul>
+    <li>fuel type: <strong>{{car.fuelType}}</strong></li>
+    <li>fuel capacity: <strong>{{car.fuelCapacity}}</strong> l</li>
+    <li>fuel consumption: <strong>{{car.fuelConsumption}}</strong> l/100km</li>
+    <li>emissions CO2: <strong>{{car.emissionsCO2}}</strong> g/km</li>
+    <li>meets emission standard: <strong>{{car.meetsEmissionStandard}}</strong></li>
+  </ul>
+  </div>
+</div>

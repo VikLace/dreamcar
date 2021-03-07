@@ -8,11 +8,13 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarsComponent } from './cars/cars.component';
+import { CarDetesComponent } from './car-detes/car-detes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarsComponent
+    CarsComponent,
+    CarDetesComponent
   ],
   imports: [
     BrowserModule,
