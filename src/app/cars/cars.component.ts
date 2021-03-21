@@ -24,7 +24,12 @@ export class CarsComponent implements OnInit {
   constructor(private carService: CarService) { }
 
   ngOnInit(): void {
-    this.carService.getCars().subscribe(c => this.cars = c);
+    this.loadCars();
+  }
+
+  private loadCars(): void{
+    this.cars = [];
+    this.carService.getCars(this.performance, this.environment, this.capacity).subscribe(c => this.cars = c);
   }
 
   generateClick(): void{
@@ -44,6 +49,7 @@ export class CarsComponent implements OnInit {
           this.capacity -= sum;
         }
     }
+    this.loadCars();
   }
 
 }

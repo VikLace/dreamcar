@@ -12,8 +12,10 @@ export class CarService {
 
   constructor(private http: HttpClient) { }
 
-  getCars(): Observable<Car[]> {
-    return this.http.get<Car[]>(this.carsUrl);
+  getCars(performance?:number, environment?:number, capacity?:number): Observable<Car[]> {
+    let cars = this.http.get<Car[]>(this.carsUrl);
+    //pairwise comparison goes here
+    return cars;
   }
 
   getCar(id: number): Observable<Car> {

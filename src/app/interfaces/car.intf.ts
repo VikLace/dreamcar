@@ -33,4 +33,9 @@ export interface Car{
   fuelConsumption: number; //litres/100km
   emissionsCO2: number; //g/km
   meetsEmissionStandard: string;
+
+  performanceScore: number;
+  environmentScore: number;
+  capacityScore: number;
+  overallScore: number;
 }
