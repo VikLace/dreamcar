@@ -17,11 +17,33 @@ import { Transmission } from "app/enums/transmission.enum";
 export class CarsComponent implements OnInit {
 
   cars: Car[] = [];
+  performance!: number;
+  environment!: number;
+  capacity!: number;
 
   constructor(private carService: CarService) { }
 
   ngOnInit(): void {
     this.carService.getCars().subscribe(c => this.cars = c);
+  }
+
+  generateClick(): void{
+    this.performance = this.performance || 0;
+    this.environment = this.environment || 0;
+    this.capacity = this.capacity || 0;
+    //todo: need a normal proportion calc, so sum is always 100
+    let sum = this.performance + this.environment + this.capacity;
+    if (sum > 0)
+    {
+        this.performance = Math.round(this.performance / sum * 100);
+        this.environment = Math.round(this.environment / sum * 100);
+        this.capacity = Math.round(this.capacity / sum * 100);
+        sum = this.performance + this.environment + this.capacity - 100;
+        if (sum != 0)
+        {
+          this.capacity -= sum;
+        }
+    }
   }
 
 }
