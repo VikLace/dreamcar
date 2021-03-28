@@ -203,7 +203,7 @@
 },
 {
 "accelerationTime":"4.2",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"BMW",
 "cargoVolume":"390",
 "driveWheelConfiguration":"Rear",
@@ -460,7 +460,7 @@
 "width":"184.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Bugatti",
 "driveWheelConfiguration":"Rear",
 "fuelType":"Petrol",
@@ -1989,7 +1989,7 @@
 "width":"173.9"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Honda",
 "driveWheelConfiguration":"Front",
 "fuelCapacity":"45",
@@ -2724,7 +2724,7 @@
 },
 {
 "accelerationTime":"5.0",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Mercedes Benz",
 "cargoVolume":"425",
 "driveWheelConfiguration":"All",
@@ -3307,7 +3307,7 @@
 "wheelbase":"272.8"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"95",
@@ -5747,7 +5747,7 @@
 "width":"166.3"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Ferrari",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"140",
@@ -7196,7 +7196,7 @@
 "width":"189.9"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "driveWheelConfiguration":"Rear",
 "fuelType":"Petrol",
@@ -7271,7 +7271,7 @@
 },
 {
 "accelerationTime":"4.1",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Jaguar",
 "cargoVolume":"299",
 "driveWheelConfiguration":"All",
@@ -9900,7 +9900,7 @@
 },
 {
 "accelerationTime":"2.8",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Nissan",
 "cargoVolume":"315",
 "driveWheelConfiguration":"All",
@@ -10315,7 +10315,7 @@
 },
 {
 "accelerationTime":"5.1",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Porsche",
 "cargoVolume":"425",
 "driveWheelConfiguration":"Rear",
@@ -10394,7 +10394,7 @@
 },
 {
 "accelerationTime":"7.4",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Audi",
 "cargoVolume":"465",
 "driveWheelConfiguration":"All",
@@ -10938,7 +10938,7 @@
 "width":"175.5"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"68.2",
@@ -11091,7 +11091,7 @@
 "width":"170.6"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Porsche",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"84.1",
@@ -12530,7 +12530,7 @@
 "width":"179.9"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Nissan",
 "driveWheelConfiguration":"All",
 "fuelCapacity":"65",
@@ -14735,7 +14735,7 @@
 },
 {
 "accelerationTime":"7.3",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Audi",
 "cargoVolume":"454",
 "driveWheelConfiguration":"Front",
@@ -14953,7 +14953,7 @@
 "wheelbase":"260.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Honda",
 "cargoVolume":"388",
 "driveWheelConfiguration":"All",
@@ -14977,7 +14977,7 @@
 },
 {
 "accelerationTime":"10.10",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Mercedes Benz",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"90",
@@ -15487,7 +15487,7 @@
 },
 {
 "accelerationTime":"3.6",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Porsche",
 "cargoVolume":"132",
 "driveWheelConfiguration":"All",
@@ -15696,7 +15696,7 @@
 },
 {
 "accelerationTime":"4.9",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"BMW",
 "cargoVolume":"370",
 "driveWheelConfiguration":"Rear",
@@ -20110,7 +20110,7 @@
 },
 {
 "accelerationTime":"10.10",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Mercedes Benz",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"90",
@@ -20131,7 +20131,7 @@
 "width":"179"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Porsche",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"62",
@@ -20487,7 +20487,7 @@
 "width":"184.1"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Honda",
 "driveWheelConfiguration":"Front",
 "fuelCapacity":"60",
@@ -22434,7 +22434,7 @@
 "width":"183.9"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Aston Martin",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"86.4",
@@ -22715,7 +22715,7 @@
 },
 {
 "accelerationTime":"5.60",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Maserati",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"80",
@@ -23621,7 +23621,7 @@
 "wheelbase":"296.8"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Ford",
 "cargoVolume":"408",
 "driveWheelConfiguration":"Rear",
@@ -24476,7 +24476,7 @@
 "width":"179.2"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Mitsubishi",
 "driveWheelConfiguration":"Front",
 "fuelType":"Petrol",
@@ -25985,7 +25985,7 @@
 "width":"177.7"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Lotus",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"60",
@@ -28343,7 +28343,7 @@
 "width":"206.9"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Honda",
 "driveWheelConfiguration":"Front",
 "fuelCapacity":"50",
@@ -28878,7 +28878,7 @@
 "width":"183.9"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"70",
@@ -29360,7 +29360,7 @@
 "wheelbase":"249.6"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Lamborghini",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"81.8",
@@ -30743,7 +30743,7 @@
 "width":"181.1"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Honda",
 "driveWheelConfiguration":"Front",
 "fuelCapacity":"50",
@@ -31295,7 +31295,7 @@
 "width":"179.4"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Ford",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"59.5",
@@ -31942,7 +31942,7 @@
 },
 {
 "accelerationTime":"9.9",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Honda",
 "cargoVolume":"225",
 "driveWheelConfiguration":"Front",
@@ -33302,7 +33302,7 @@
 },
 {
 "accelerationTime":"6.4",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Audi",
 "cargoVolume":"465",
 "driveWheelConfiguration":"Front",
@@ -33512,7 +33512,7 @@
 },
 {
 "accelerationTime":"4.9",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Porsche",
 "cargoVolume":"425",
 "driveWheelConfiguration":"Rear",
@@ -33614,7 +33614,7 @@
 "width":"185.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Cadillac",
 "driveWheelConfiguration":"Front",
 "fuelCapacity":"102.3",
@@ -34754,7 +34754,7 @@
 },
 {
 "accelerationTime":"4.5",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Porsche",
 "cargoVolume":"405",
 "driveWheelConfiguration":"Rear",
@@ -35452,7 +35452,7 @@
 "width":"166"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Alfa Romeo",
 "driveWheelConfiguration":"Rear",
 "fuelType":"Petrol",
@@ -35992,7 +35992,7 @@
 },
 {
 "accelerationTime":"5.2",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Audi",
 "cargoVolume":"465",
 "driveWheelConfiguration":"All",
@@ -36228,7 +36228,7 @@
 "width":"172.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Lancia",
 "driveWheelConfiguration":"Front",
 "fuelCapacity":"37.5",
@@ -37089,7 +37089,7 @@
 "width":"180.9"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"83.3",
@@ -37869,7 +37869,7 @@
 },
 {
 "accelerationTime":"12.80",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Mercedes Benz",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"65",
@@ -38651,7 +38651,7 @@
 },
 {
 "accelerationTime":"12.40",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Mercedes Benz",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"78",
@@ -39297,7 +39297,7 @@
 },
 {
 "accelerationTime":"5.30",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Bentley",
 "driveWheelConfiguration":"Rear",
 "emissionsCO2":"465.0",
@@ -39609,7 +39609,7 @@
 "wheelbase":"260.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "cargoVolume":"190",
 "driveWheelConfiguration":"Rear",
@@ -39757,7 +39757,7 @@
 "width":"181.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Bugatti",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"87.1",
@@ -40321,7 +40321,7 @@
 "width":"178.5"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Lancia",
 "driveWheelConfiguration":"Front",
 "fuelCapacity":"48.2",
@@ -40523,7 +40523,7 @@
 },
 {
 "accelerationTime":"13.00",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"BMW",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"75",
@@ -40797,7 +40797,7 @@
 "width":"176.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Lamborghini",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"93",
@@ -40846,7 +40846,7 @@
 "width":"179.8"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Alfa Romeo",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"46",
@@ -42803,7 +42803,7 @@
 "width":"177.2"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "driveWheelConfiguration":"Rear",
 "fuelType":"Petrol",
@@ -43001,7 +43001,7 @@
 },
 {
 "accelerationTime":"5.9",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Mercedes Benz",
 "cargoVolume":"425",
 "driveWheelConfiguration":"Rear",
@@ -44905,7 +44905,7 @@
 "width":"202.9"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Ford",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"60.6",
@@ -45179,7 +45179,7 @@
 "width":"177.7"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"BMW",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"54.6",
@@ -47998,7 +47998,7 @@
 },
 {
 "accelerationTime":"10.20",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"BMW",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"65",
@@ -48964,7 +48964,7 @@
 "width":"186.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "cargoVolume":"374",
 "driveWheelConfiguration":"Front",
@@ -53167,7 +53167,7 @@
 "width":"186.9"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Ferrari",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"120",
@@ -53723,7 +53723,7 @@
 },
 {
 "accelerationTime":"6.4",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"BMW",
 "cargoVolume":"370",
 "driveWheelConfiguration":"Rear",
@@ -54185,7 +54185,7 @@
 },
 {
 "accelerationTime":"11.50",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Mercedes Benz",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"78",
@@ -54741,7 +54741,7 @@
 "width":"179.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "cargoVolume":"181",
 "driveWheelConfiguration":"Rear",
@@ -55481,7 +55481,7 @@
 },
 {
 "accelerationTime":"4.9",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"BMW",
 "cargoVolume":"420",
 "driveWheelConfiguration":"All",
@@ -55967,7 +55967,7 @@
 "width":"188.1"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Mitsubishi",
 "driveWheelConfiguration":"Front",
 "fuelCapacity":"60",
@@ -56104,7 +56104,7 @@
 "wheelbase":"247.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Lancia",
 "driveWheelConfiguration":"Front",
 "fuelType":"Petrol",
@@ -56275,7 +56275,7 @@
 },
 {
 "accelerationTime":"4.80",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Mercedes Benz",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"120",
@@ -57190,7 +57190,7 @@
 "width":"163.9"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Ford",
 "driveWheelConfiguration":"Rear",
 "fuelType":"Petrol",
@@ -57211,7 +57211,7 @@
 "width":"164.5"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Volvo",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"60",
@@ -59199,7 +59199,7 @@
 "wheelbase":"281.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Ferrari",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"70",
@@ -59462,7 +59462,7 @@
 },
 {
 "accelerationTime":"3.6",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Aston Martin",
 "cargoVolume":"350",
 "driveWheelConfiguration":"Rear",
@@ -59715,7 +59715,7 @@
 "width":"179.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "cargoVolume":"181",
 "driveWheelConfiguration":"Rear",
@@ -60240,7 +60240,7 @@
 "width":"182.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "cargoVolume":"181",
 "driveWheelConfiguration":"Rear",
@@ -60814,7 +60814,7 @@
 "wheelbase":"264.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "cargoVolume":"181",
 "driveWheelConfiguration":"Rear",
@@ -62465,7 +62465,7 @@
 },
 {
 "accelerationTime":"5.7",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Maserati",
 "cargoVolume":"420",
 "driveWheelConfiguration":"Rear",
@@ -62488,7 +62488,7 @@
 "width":"177.5"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "cargoVolume":"374",
 "driveWheelConfiguration":"Front",
@@ -62956,7 +62956,7 @@
 "width":"163.9"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Lancia",
 "driveWheelConfiguration":"Front",
 "fuelCapacity":"48.2",
@@ -63549,7 +63549,7 @@
 "width":"172.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "cargoVolume":"310 ",
 "fuelType":"Petrol",
@@ -64559,7 +64559,7 @@
 "width":"179.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Ferrari",
 "driveWheelConfiguration":"Rear",
 "fuelType":"Petrol",
@@ -64711,7 +64711,7 @@
 "width":"169.5"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Porsche",
 "driveWheelConfiguration":"Rear",
 "fuelType":"Petrol",
@@ -65051,7 +65051,7 @@
 "width":"185.5"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Ferrari",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"74",
@@ -65633,7 +65633,7 @@
 },
 {
 "accelerationTime":"5.7",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Jaguar",
 "cargoVolume":"299",
 "driveWheelConfiguration":"Rear",
@@ -66071,7 +66071,7 @@
 "width":"172.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "driveWheelConfiguration":"Rear",
 "fuelType":"Petrol",
@@ -66864,7 +66864,7 @@
 "width":"184.5"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Porsche",
 "driveWheelConfiguration":"Rear",
 "fuelType":"Petrol",
@@ -67149,7 +67149,7 @@
 "width":"185.6"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Vauxhall",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"36",
@@ -71628,7 +71628,7 @@
 "width":"180.2"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Ferrari",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"119.3",
@@ -71775,7 +71775,7 @@
 },
 {
 "accelerationTime":"8.9",
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Mercedes Benz",
 "cargoVolume":"480",
 "driveWheelConfiguration":"Rear",
@@ -72997,7 +72997,7 @@
 "width":"182.5"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Dodge",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"72",
@@ -73705,7 +73705,7 @@
 "wheelbase":"256.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Saab",
 "driveWheelConfiguration":"All",
 "fuelType":"Petrol",
@@ -73774,7 +73774,7 @@
 "width":"183.2"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Ford",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"60.6",
@@ -74610,7 +74610,7 @@
 "width":"189.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "cargoVolume":"181",
 "driveWheelConfiguration":"Rear",
@@ -75902,7 +75902,7 @@
 "width":"180.0"
 },
 {
-"bodyType":"Coupé",
+"bodyType":"Coupe",
 "brand":"Chevrolet",
 "driveWheelConfiguration":"Rear",
 "fuelCapacity":"68.2",
