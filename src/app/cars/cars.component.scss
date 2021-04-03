@@ -21,3 +21,19 @@
 {
     color: #3E3B8B;
 }
+
+#cars_table{
+  width: 50%;
+}
+
+.mat-column-name {
+  width: 60% !important;
+}
+
+.mat-column-overallScore,
+.mat-column-performanceScore,
+.mat-column-environmentScore,
+.mat-column-capacityScore {
+  width: 10% !important;
+  //text-align: right;
+}

@@ -27,26 +27,26 @@
   </a>
 </mat-nav-list-->
 
-<table mat-table [dataSource]="cars">
+<table id="cars_table" mat-table [dataSource]="sortedData" matSort (matSortChange)="sortData($event.active, $event.direction)">
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef></th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
     <td mat-cell *matCellDef="let car"> {{car.name}} </td>
   </ng-container>
-  <ng-container matColumnDef="performanceScore">
-    <th mat-header-cell *matHeaderCellDef> Performance </th>
-    <td mat-cell class="car-performance-score" *matCellDef="let car"> {{car.performanceScore}} </td>
+  <ng-container matColumnDef="performanceScore" justify="end">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Performance</th>
+    <td mat-cell class="car-performance-score" *matCellDef="let car">{{car.performanceScore}}</td>
   </ng-container>
-  <ng-container matColumnDef="environmentScore">
-    <th mat-header-cell *matHeaderCellDef> Environment </th>
-    <td mat-cell class="car-environment-score" *matCellDef="let car"> {{car.environmentScore}} </td>
+  <ng-container matColumnDef="environmentScore" justify="end">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Environment</th>
+    <td mat-cell class="car-environment-score" *matCellDef="let car">{{car.environmentScore}}</td>
   </ng-container>
-  <ng-container matColumnDef="capacityScore">
-    <th mat-header-cell *matHeaderCellDef> Capacity </th>
-    <td mat-cell class="car-capacity-score" *matCellDef="let car"> {{car.capacityScore}} </td>
+  <ng-container matColumnDef="capacityScore" justify="end">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Capacity</th>
+    <td mat-cell class="car-capacity-score" *matCellDef="let car">{{car.capacityScore}}</td>
   </ng-container>
-  <ng-container matColumnDef="overallScore">
-    <th mat-header-cell *matHeaderCellDef> Overall </th>
-    <td mat-cell *matCellDef="let car"> {{car.overallScore}} </td>
+  <ng-container matColumnDef="overallScore" justify="end">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Overall</th>
+    <td mat-cell *matCellDef="let car">{{car.overallScore}}</td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

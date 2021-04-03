@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule,
     MatListModule,
     MatTableModule,
+    MatSortModule,
     FormsModule
   ],
   providers: [],
