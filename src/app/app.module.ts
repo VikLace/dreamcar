@@ -18,12 +18,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CheckboxlistComponent } from './checkboxlist/checkboxlist.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarsComponent,
-    CarDetesComponent
+    CarDetesComponent,
+    CheckboxlistComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatListModule,
     MatTableModule,
     MatSortModule,
+    MatCheckboxModule,
     FormsModule
   ],
   providers: [],

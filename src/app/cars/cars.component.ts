@@ -25,12 +25,12 @@ export class CarsComponent implements OnInit {
   environment!: number;
   capacity!: number;
 
-  private uqBodyType: string[] = [];
-  private uqDriveWheelConfiguration: string[] = [];
-  private uqTransmission: string[] = [];
-  private uqFuelType: string[] = [];
-  private minProductionYear: number = 0;
-  private maxProductionYear: number = 0;
+  uqBodyType!: string[];
+  uqDriveWheelConfiguration!: string[];
+  uqTransmission!: string[];
+  uqFuelType!: string[];
+  minProductionYear: number = 0;
+  maxProductionYear: number = 0;
 
   constructor(private carService: CarService) { }
 

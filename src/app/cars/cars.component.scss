@@ -23,7 +23,7 @@
 }
 
 #cars_table{
-  width: 50%;
+  width: 100%;
 }
 
 .mat-column-name {
@@ -36,4 +36,13 @@
 .mat-column-capacityScore {
   width: 10% !important;
   //text-align: right;
+}
+
+#cars-container{
+  display: flex;
+  justify-content: flex-start;
+}
+
+#cars-filter-sidebar{
+  width: 200px;
 }
