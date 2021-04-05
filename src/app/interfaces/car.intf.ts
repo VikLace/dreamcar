@@ -2,6 +2,7 @@ import { BodyType } from "app/enums/body-type.enum";
 import { DriveWheelConfiguration } from "app/enums/drive-wheel-configuration.enum";
 import { FuelType } from "app/enums/fuel-type.enum";
 import { Transmission } from "app/enums/transmission.enum";
+import { EmissionStandard } from "app/enums/emission-standard.enum";
 
 export interface Car{
   id: number;
@@ -10,7 +11,7 @@ export interface Car{
   productionDate: number; //year
   image: string;
 
-  bodyType: string;//BodyType;
+  bodyType: BodyType;
   height: number; //centimeters
   width: number; //centimeters
   wheelbase: number; //centimeters
@@ -19,8 +20,8 @@ export interface Car{
   seatingCapacity: number;
   cargoVolume: number; //litres
 
-  driveWheelConfiguration: string;//DriveWheelConfiguration;
-  transmission: string;//Transmission;
+  driveWheelConfiguration: DriveWheelConfiguration;
+  transmission: Transmission;
   numberOfForwardGears: number;
   accelerationTime: number; //seconds
   speed: number; //hm/h
@@ -28,11 +29,11 @@ export interface Car{
   enginePower: number; //HP
   torque: number; //Nm
 
-  fuelType: string;//FuelType;
+  fuelType: FuelType;
   fuelCapacity: number; //litres
   fuelConsumption: number; //litres/100km
   emissionsCO2: number; //g/km
-  meetsEmissionStandard: string;
+  meetsEmissionStandard: EmissionStandard;
 
   performanceScore: number;
   environmentScore: number;

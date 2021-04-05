@@ -4,6 +4,7 @@
     <app-checkboxlist *ngIf="uqDriveWheelConfiguration" [name]="'Drive wheel'" [values]="uqDriveWheelConfiguration"></app-checkboxlist>
     <app-checkboxlist *ngIf="uqTransmission" [name]="'Transmission'" [values]="uqTransmission"></app-checkboxlist>
     <app-checkboxlist *ngIf="uqFuelType" [name]="'Fuel type'" [values]="uqFuelType"></app-checkboxlist>
+    <app-checkboxlist *ngIf="uqEmissionStandard" [name]="'Emission standard'" [values]="uqEmissionStandard"></app-checkboxlist>
   </div>
   <div>
     <div id="pair_comparison_inputs">
@@ -31,19 +32,19 @@
       </ng-container>
       <ng-container matColumnDef="performanceScore" justify="end">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Performance</th>
-        <td mat-cell class="car-performance-score" *matCellDef="let car">{{car.performanceScore}}</td>
+        <td mat-cell class="car-performance-score" *matCellDef="let car">{{car.performanceScore | number : '1.0-0'}}</td>
       </ng-container>
       <ng-container matColumnDef="environmentScore" justify="end">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Environment</th>
-        <td mat-cell class="car-environment-score" *matCellDef="let car">{{car.environmentScore}}</td>
+        <td mat-cell class="car-environment-score" *matCellDef="let car">{{car.environmentScore | number : '1.0-0'}}</td>
       </ng-container>
       <ng-container matColumnDef="capacityScore" justify="end">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Capacity</th>
-        <td mat-cell class="car-capacity-score" *matCellDef="let car">{{car.capacityScore}}</td>
+        <td mat-cell class="car-capacity-score" *matCellDef="let car">{{car.capacityScore | number : '1.0-0'}}</td>
       </ng-container>
       <ng-container matColumnDef="overallScore" justify="end">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Overall</th>
-        <td mat-cell *matCellDef="let car">{{car.overallScore}}</td>
+        <td mat-cell *matCellDef="let car">{{car.overallScore | number : '1.0-0'}}</td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
