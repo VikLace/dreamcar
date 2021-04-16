@@ -1,8 +1,10 @@
-<mat-checkbox [checked]="allChecked" [indeterminate]="isFewSelected()" (change)="setAll($event.checked)">
-  {{cblist.name}}:
-</mat-checkbox>
-<li *ngFor="let i of cblist.items">
-  <mat-checkbox [(ngModel)]="i.selected" (ngModelChange)="updateAllComplete()">
-    {{i.name}}
+<div *ngIf="enumFilter">
+  <mat-checkbox class="filter-checkbox" [checked]="allChecked" [indeterminate]="isFewSelected()" (change)="setAll($event.checked)">
+    {{enumFilter.getName()}}:
   </mat-checkbox>
-</li>
+  <div *ngFor="let i of enumFilter.items">
+    <mat-checkbox class="filter-sub-checkbox" [(ngModel)]="i.checked" (ngModelChange)="onChange($event.checked)">
+      {{i.name}}
+    </mat-checkbox>
+  </div>
+</div>

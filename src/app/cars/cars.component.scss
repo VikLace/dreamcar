@@ -1,10 +1,6 @@
-#pair_comparison_inputs
-{
-    margin: 20px;
-    width: 800px;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+#cars-score-sidebar{
+  width: 180px;
+  margin: 30px;
 }
 
 .car-performance-score
@@ -20,6 +16,11 @@
 .car-capacity-score
 {
     color: #3E3B8B;
+}
+
+#generate-button{
+  margin-top: 10px;
+  width: 100%;
 }
 
 #cars_table{
@@ -44,5 +45,11 @@
 }
 
 #cars-filter-sidebar{
-  width: 200px;
+  width: 280px;
+  margin: 30px;
+}
+
+#filter-button{
+  margin-top: 20px;
+  width: 100%;
 }

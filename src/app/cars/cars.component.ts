@@ -5,12 +5,19 @@ import { Car } from "app/interfaces/car.intf";
 
 import { CarService } from 'app/services/car.service';
 
-import { BodyType } from "app/enums/body-type.enum";
+/*import { BodyType } from "app/enums/body-type.enum";
 import { DriveWheelConfiguration } from "app/enums/drive-wheel-configuration.enum";
-import { FuelType } from "app/enums/fuel-type.enum";
 import { Transmission } from "app/enums/transmission.enum";
-import { EmissionStandard } from "app/enums/emission-standard.enum";
+import { EmissionStandard } from "app/enums/emission-standard.enum";*/
+import { FuelType } from "app/enums/fuel-type.enum";
 import { PairWiseResult } from "app/enums/pairwise-result.enum";
+
+import { EnumFilter } from "app/filters/enum-filter";
+import { BodyTypeFilter } from "app/filters/body-type-filter";
+import { TransmissionFilter } from "app/filters/transmission-filter";
+import { DriveWheelConfigurationFilter } from "app/filters/drive-wheel-configuration-filter";
+import { FuelTypeFilter } from "app/filters/fuel-type-filter";
+import { EmissionStandardFilter } from "app/filters/emission-standard-filter";
 
 @Component({
   selector: 'app-cars',
@@ -22,42 +29,46 @@ export class CarsComponent implements OnInit {
   displayedColumns: string[] = ["name", "performanceScore", "environmentScore", "capacityScore", "overallScore"];
   private cars: Car[] = [];
   sortedData: Car[] = [];
+
   performance!: number;
   environment!: number;
   capacity!: number;
 
-  uqBodyType!: string[];
-  uqDriveWheelConfiguration!: string[];
-  uqTransmission!: string[];
-  uqFuelType!: string[];
-  uqEmissionStandard!: string[];
-  minProductionYear: number = 0;
-  maxProductionYear: number = 0;
+  enumFilters: EnumFilter<any>[] = [];
 
-  constructor(private carService: CarService) { }
+  /*minProductionYear: number = 0;
+  maxProductionYear: number = 0;*/
 
-  ngOnInit(): void {
+  constructor(private carService: CarService)
+  {
+      this.enumFilters.push(new BodyTypeFilter());
+      this.enumFilters.push(new TransmissionFilter());
+      this.enumFilters.push(new DriveWheelConfigurationFilter());
+      this.enumFilters.push(new FuelTypeFilter());
+      this.enumFilters.push(new EmissionStandardFilter());
+  }
+
+  ngOnInit(): void
+  {
     this.loadCars();
   }
 
-  private loadCars(): void{
+  private loadCars(): void
+  {
     this.cars = [];
     this.carService.getCars().subscribe(c => {
       this.cars = c;
       this.sortData('name','asc');
 
-      this.uqBodyType = [...new Set(c.map(r => BodyType[r.bodyType]))].filter(r => !!r);
-      this.uqDriveWheelConfiguration = [...new Set(c.map(r => DriveWheelConfiguration[r.driveWheelConfiguration]))].filter(r => !!r);
-      this.uqTransmission = [...new Set(c.map(r => Transmission[r.transmission]))].filter(r => !!r);
-      this.uqFuelType = [...new Set(c.map(r => FuelType[r.fuelType]))].filter(r => !!r);
-      this.uqEmissionStandard = [...new Set(c.map(r => EmissionStandard[r.meetsEmissionStandard]))].filter(r => !!r);
-
-      this.minProductionYear = Math.min.apply(Math, c.map(function(o) { return o.productionDate || 99999; }))
-      this.maxProductionYear = Math.max.apply(Math, c.map(function(o) { return o.productionDate || 0; }))
+      /*this.minProductionYear = Math.min.apply(Math, c.map(function(o) { return o.productionDate || 99999; }))
+      this.maxProductionYear = Math.max.apply(Math, c.map(function(o) { return o.productionDate || 0; }))*/
     });
   }
 
-  //private compareCars(car1: Car, car2: Car, group: string, criteria: string, minmax: bool)
+  filterChanged(): void{
+    //todo!!!
+    this.enumFilters.forEach(f => console.log(f.getName()+"="+f.getFilter()));
+  }
 
   generateClick(): void{
     this.performance = this.performance || 0;
@@ -80,9 +91,6 @@ export class CarsComponent implements OnInit {
       this.capacity -= sum;
     }
 
-    //console.log(`perf ${this.performance}`);
-    //console.log(`env ${this.environment}`);
-    //console.log(`cap ${this.capacity}`);
     this.cars.forEach(r => {
       r.capacityScore = 0;
       r.performanceScore = 0;
@@ -90,7 +98,7 @@ export class CarsComponent implements OnInit {
       r.overallScore = 0;
     })
 
-    //fill pairwise comparison //76,449,000 comparisons ((3000^2/2 - 3000) * 17)
+    //fill pairwise comparison
     var t0 = performance.now();
     let res = 0.00;
     for (let i = 0; i < this.cars.length; i++)

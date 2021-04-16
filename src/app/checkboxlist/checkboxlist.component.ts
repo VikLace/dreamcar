@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { CheckBoxFilter } from 'app/checkboxlist/checkboxFilter';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { EnumFilter } from 'app/filters/enum-filter';
 
 @Component({
   selector: 'app-checkboxlist',
@@ -7,29 +7,30 @@ import { CheckBoxFilter } from 'app/checkboxlist/checkboxFilter';
   styleUrls: ['./checkboxlist.component.scss']
 })
 
-export class CheckboxlistComponent implements OnInit {
+export class CheckboxlistComponent {
 
-  allChecked: boolean = true;
-  cblist!: CheckBoxFilter;
+  allChecked: boolean = false;
 
-  @Input() name: string = "";
-  @Input() values: string[] = [];
-
-  ngOnInit(): void {
-    this.cblist = new CheckBoxFilter(this.name, this.values);
-  }
+  @Input() enumFilter!: EnumFilter<any>;
+  @Output() filterChanged = new EventEmitter<void>();
 
   isFewSelected(): boolean {
-    return (this.cblist.items == null) || (this.cblist.items.filter(t => t.selected).length > 0 && !this.allChecked);
+    return (this.enumFilter.items == null) || (this.enumFilter.items.filter(t => t.checked).length > 0 && !this.allChecked);
   }
 
   setAll(selected: boolean) {
     this.allChecked = selected;
-    if (this.cblist.items)
-      this.cblist.items.forEach(t => t.selected = selected);
+    if (this.enumFilter.items)
+      this.enumFilter.items.forEach(t => t.checked = selected);
+    this.filterChanged.emit();
   }
 
-  updateAllComplete() {
-    this.allChecked = this.cblist.items != null && this.cblist.items.every(t => t.selected);
+  private updateAllComplete() {
+    this.allChecked = this.enumFilter.items != null && this.enumFilter.items.every(t => t.checked);
+  }
+
+  onChange(value: boolean){
+    this.filterChanged.emit();
+    this.updateAllComplete();
   }
 }
