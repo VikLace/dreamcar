@@ -1,9 +1,12 @@
 <div id="cars-container">
   <div id="cars-filter-sidebar" *ngIf="enumFilters">
     <app-checkboxlist *ngFor="let i of enumFilters" [enumFilter]="i" (filterChanged)="filterChanged()"></app-checkboxlist>
+    <div id="record-count-info">
+      <em>ierakstu skaits: {{carsDataSource.filteredData.length}}/{{carsDataSource.data.length}}</em>
+    </div>
   </div>
   <div>
-    <table id="cars_table" mat-table [dataSource]="sortedData" matSort (matSortChange)="sortData($event.active, $event.direction)">
+    <table id="cars_table" mat-table [dataSource]="carsDataSource" matSort matSortActive="name" matSortDirection="asc">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
         <td mat-cell *matCellDef="let car"> {{car.name}} </td>

@@ -3,9 +3,9 @@ import { BodyType } from "app/enums/body-type.enum";
 
 export class BodyTypeFilter extends EnumFilter<BodyType> {
 
-  constructor()
+  constructor(filterField: string)
   {
-    super(BodyType);
+    super(filterField, BodyType);
   }
 
   public getName(): string{

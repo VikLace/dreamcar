@@ -3,9 +3,9 @@ import { FuelType } from "app/enums/fuel-type.enum";
 
 export class FuelTypeFilter extends EnumFilter<FuelType> {
 
-  constructor()
+  constructor(filterField: string)
   {
-    super(FuelType);
+    super(filterField, FuelType);
   }
 
   public getName(): string{

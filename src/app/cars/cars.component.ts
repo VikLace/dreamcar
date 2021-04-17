@@ -1,14 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Sort } from '@angular/material/sort';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { Car } from "app/interfaces/car.intf";
-
 import { CarService } from 'app/services/car.service';
 
-/*import { BodyType } from "app/enums/body-type.enum";
-import { DriveWheelConfiguration } from "app/enums/drive-wheel-configuration.enum";
-import { Transmission } from "app/enums/transmission.enum";
-import { EmissionStandard } from "app/enums/emission-standard.enum";*/
 import { FuelType } from "app/enums/fuel-type.enum";
 import { PairWiseResult } from "app/enums/pairwise-result.enum";
 
@@ -24,11 +20,12 @@ import { EmissionStandardFilter } from "app/filters/emission-standard-filter";
   templateUrl: './cars.component.html',
   styleUrls: ['./cars.component.scss']
 })
-export class CarsComponent implements OnInit {
+export class CarsComponent implements AfterViewInit {
+
+  carsDataSource: MatTableDataSource<Car>;
+  @ViewChild(MatSort) sort!: MatSort;
 
   displayedColumns: string[] = ["name", "performanceScore", "environmentScore", "capacityScore", "overallScore"];
-  private cars: Car[] = [];
-  sortedData: Car[] = [];
 
   performance!: number;
   environment!: number;
@@ -41,24 +38,40 @@ export class CarsComponent implements OnInit {
 
   constructor(private carService: CarService)
   {
-      this.enumFilters.push(new BodyTypeFilter());
-      this.enumFilters.push(new TransmissionFilter());
-      this.enumFilters.push(new DriveWheelConfigurationFilter());
-      this.enumFilters.push(new FuelTypeFilter());
-      this.enumFilters.push(new EmissionStandardFilter());
+      this.enumFilters.push(new BodyTypeFilter("bodyType"));
+      this.enumFilters.push(new TransmissionFilter("transmission"));
+      this.enumFilters.push(new DriveWheelConfigurationFilter("driveWheelConfiguration"));
+      this.enumFilters.push(new FuelTypeFilter("fuelType"));
+      this.enumFilters.push(new EmissionStandardFilter("meetsEmissionStandard"));
+
+      this.carsDataSource = new MatTableDataSource<Car>();
+      this.carsDataSource.filterPredicate = (car: Car, filter: string) =>
+        {
+          let filters = filter.split(";");
+          for (let i = 0; i < filters.length; i++) {
+            const f = filters[i];
+            let tmp = f.split("=");
+            let fieldName = tmp[0] as keyof typeof car;
+            if (!car.hasOwnProperty(fieldName))
+              return false;
+            let values = tmp[1].split(",").map(x => +x);
+            if (!values.includes(car[fieldName] as number))
+              return false;
+          }
+          return true;
+        };
   }
 
-  ngOnInit(): void
+  ngAfterViewInit()
   {
     this.loadCars();
   }
 
   private loadCars(): void
   {
-    this.cars = [];
     this.carService.getCars().subscribe(c => {
-      this.cars = c;
-      this.sortData('name','asc');
+      this.carsDataSource.data = c;
+      this.carsDataSource.sort = this.sort;
 
       /*this.minProductionYear = Math.min.apply(Math, c.map(function(o) { return o.productionDate || 99999; }))
       this.maxProductionYear = Math.max.apply(Math, c.map(function(o) { return o.productionDate || 0; }))*/
@@ -66,8 +79,18 @@ export class CarsComponent implements OnInit {
   }
 
   filterChanged(): void{
-    //todo!!!
-    this.enumFilters.forEach(f => console.log(f.getName()+"="+f.getFilter()));
+    this.carsDataSource.filter = this.enumFilters.map(f => f.getFilter()).filter(Boolean).join(';');
+    this.clearScoring();
+  }
+
+  private clearScoring()
+  {
+    this.carsDataSource.data.forEach(r => {
+      r.capacityScore = 0;
+      r.performanceScore = 0;
+      r.environmentScore = 0;
+      r.overallScore = 0;
+    });
   }
 
   generateClick(): void{
@@ -79,8 +102,6 @@ export class CarsComponent implements OnInit {
     if (sum == 0)
       return;
 
-    this.sortedData = [];
-
     //todo: need a normal proportion calc, so sum is always 100
     this.performance = Math.round(this.performance / sum * 100);
     this.environment = Math.round(this.environment / sum * 100);
@@ -91,108 +112,81 @@ export class CarsComponent implements OnInit {
       this.capacity -= sum;
     }
 
-    this.cars.forEach(r => {
-      r.capacityScore = 0;
-      r.performanceScore = 0;
-      r.environmentScore = 0;
-      r.overallScore = 0;
-    })
+    this.clearScoring();
 
     //fill pairwise comparison
     var t0 = performance.now();
     let res = 0.00;
-    for (let i = 0; i < this.cars.length; i++)
+    let cars = this.carsDataSource.filteredData;
+    for (let i = 0; i < cars.length; i++)
     {
-      for (let j = i + 1; j < this.cars.length; j++)
+      for (let j = i + 1; j < cars.length; j++)
       {
         //capacity
-        res = compareRank(this.cars[i].height, this.cars[j].height) * 0.1 +
-          compareRank(this.cars[i].width, this.cars[j].width) * 0.03 +
-          compareRank(this.cars[i].wheelbase, this.cars[j].wheelbase) * 0.01 +
-          compareRank(this.cars[i].weight, this.cars[j].weight) * 0.01 +
-          compareRank(this.cars[i].numberOfDoors, this.cars[j].numberOfDoors) * 0.05 +
-          compareRank(this.cars[i].seatingCapacity, this.cars[j].seatingCapacity) * 0.3 +
-          compareRank(this.cars[i].cargoVolume, this.cars[j].cargoVolume) * 0.5;
+        res = compareRank(cars[i].height, cars[j].height) * 0.1 +
+          compareRank(cars[i].width, cars[j].width) * 0.03 +
+          compareRank(cars[i].wheelbase, cars[j].wheelbase) * 0.01 +
+          compareRank(cars[i].weight, cars[j].weight) * 0.01 +
+          compareRank(cars[i].numberOfDoors, cars[j].numberOfDoors) * 0.05 +
+          compareRank(cars[i].seatingCapacity, cars[j].seatingCapacity) * 0.3 +
+          compareRank(cars[i].cargoVolume, cars[j].cargoVolume) * 0.5;
         //result for car1
-        this.cars[i].capacityScore += res;
+        cars[i].capacityScore += res;
         //reverse result for car2
-        this.cars[j].capacityScore += PairWiseResult.Win - res;
+        cars[j].capacityScore += PairWiseResult.Win - res;
 
         //performance
         //if any of cars is electric, then compare only by acc.time and speed
-        if (this.cars[i].fuelType == FuelType.Electric || this.cars[j].fuelType == FuelType.Electric)
-          res = compareRank(this.cars[i].accelerationTime, this.cars[j].accelerationTime, true) * 0.9 +
-            compareRank(this.cars[i].speed, this.cars[j].speed) * 0.1;
+        if (cars[i].fuelType == FuelType.Electric || cars[j].fuelType == FuelType.Electric)
+          res = compareRank(cars[i].accelerationTime, cars[j].accelerationTime, true) * 0.9 +
+            compareRank(cars[i].speed, cars[j].speed) * 0.1;
         else
-          res = compareRank(this.cars[i].numberOfForwardGears, this.cars[j].numberOfForwardGears) * 0.01 +
-            compareRank(this.cars[i].accelerationTime, this.cars[j].accelerationTime, true) * 0.5 +
-            compareRank(this.cars[i].speed, this.cars[j].speed) * 0.04 +
-            compareRank(this.cars[i].engineDisplacement, this.cars[j].engineDisplacement) * 0.1 +
-            compareRank(this.cars[i].enginePower, this.cars[j].enginePower) * 0.25 +
-            compareRank(this.cars[i].torque, this.cars[j].torque) * 0.1;
+          res = compareRank(cars[i].numberOfForwardGears, cars[j].numberOfForwardGears) * 0.01 +
+            compareRank(cars[i].accelerationTime, cars[j].accelerationTime, true) * 0.5 +
+            compareRank(cars[i].speed, cars[j].speed) * 0.04 +
+            compareRank(cars[i].engineDisplacement, cars[j].engineDisplacement) * 0.1 +
+            compareRank(cars[i].enginePower, cars[j].enginePower) * 0.25 +
+            compareRank(cars[i].torque, cars[j].torque) * 0.1;
         //result for car1
-        this.cars[i].performanceScore += res;
+        cars[i].performanceScore += res;
         //reverse result for car2
-        this.cars[j].performanceScore += PairWiseResult.Win - res;
+        cars[j].performanceScore += PairWiseResult.Win - res;
 
         //environment
         //if any of cars is electric, then compare onyle fuel type and prod.year
-        if (this.cars[i].fuelType == FuelType.Electric || this.cars[j].fuelType == FuelType.Electric)
-          res = compareFuel(this.cars[i].fuelType, this.cars[j].fuelType) * 0.8 +
-            compareRank(this.cars[i].productionDate, this.cars[j].productionDate) * 0.2;
+        if (cars[i].fuelType == FuelType.Electric || cars[j].fuelType == FuelType.Electric)
+          res = compareFuel(cars[i].fuelType, cars[j].fuelType) * 0.8 +
+            compareRank(cars[i].productionDate, cars[j].productionDate) * 0.2;
         else
-          res = compareFuel(this.cars[i].fuelType, this.cars[j].fuelType) * 0.3 +
-            compareRank(this.cars[i].fuelCapacity, this.cars[j].fuelCapacity) * 0.05 +
-            compareRank(this.cars[i].fuelConsumption, this.cars[j].fuelConsumption, true) * 0.15 +
-            compareRank(this.cars[i].emissionsCO2, this.cars[j].emissionsCO2, true) * 0.3 +
-            compareRank(this.cars[i].meetsEmissionStandard, this.cars[j].meetsEmissionStandard, false) * 0.1 +
-            compareRank(this.cars[i].productionDate, this.cars[j].productionDate) * 0.1;
+          res = compareFuel(cars[i].fuelType, cars[j].fuelType) * 0.3 +
+            compareRank(cars[i].fuelCapacity, cars[j].fuelCapacity) * 0.05 +
+            compareRank(cars[i].fuelConsumption, cars[j].fuelConsumption, true) * 0.15 +
+            compareRank(cars[i].emissionsCO2, cars[j].emissionsCO2, true) * 0.3 +
+            compareRank(cars[i].meetsEmissionStandard, cars[j].meetsEmissionStandard, false) * 0.1 +
+            compareRank(cars[i].productionDate, cars[j].productionDate) * 0.1;
         //result for car1
-        this.cars[i].environmentScore += res;
+        cars[i].environmentScore += res;
         //reverse result for car2
-        this.cars[j].environmentScore += PairWiseResult.Win - res;
+        cars[j].environmentScore += PairWiseResult.Win - res;
 
         //overall
-        this.cars[i].overallScore =
-          this.cars[i].capacityScore * this.capacity/100 +
-          this.cars[i].performanceScore * this.performance/100 +
-          this.cars[i].environmentScore * this.environment/100;
-        this.cars[j].overallScore =
-          this.cars[j].capacityScore * this.capacity/100 +
-          this.cars[j].performanceScore * this.performance/100 +
-          this.cars[j].environmentScore * this.environment/100;
+        cars[i].overallScore =
+          cars[i].capacityScore * this.capacity/100 +
+          cars[i].performanceScore * this.performance/100 +
+          cars[i].environmentScore * this.environment/100;
+        cars[j].overallScore =
+          cars[j].capacityScore * this.capacity/100 +
+          cars[j].performanceScore * this.performance/100 +
+          cars[j].environmentScore * this.environment/100;
       }
     }
     var t1 = performance.now();
     console.log("pairwise comparison took " + (t1 - t0) + " ms.");
 
-    this.sortData('overallScore','desc');
+    this.sort.active = "overallScore";
+    this.sort.direction = "desc";
+    this.sort.sortChange.emit();
   }
-
-  sortData(field:string, direction:string) {
-    const data = this.cars.slice();
-    if (!field || direction === '') {
-      this.sortedData = data;
-      return;
-    }
-
-    this.sortedData = data.sort((a, b) => {
-      const isAsc = direction === 'asc';
-      switch (field) {
-        case 'name': return compareSort(a.name, b.name, isAsc);
-        case 'capacityScore': return compareSort(a.capacityScore, b.capacityScore, isAsc);
-        case 'performanceScore': return compareSort(a.performanceScore, b.performanceScore, isAsc);
-        case 'environmentScore': return compareSort(a.environmentScore, b.environmentScore, isAsc);
-        case 'overallScore': return compareSort(a.overallScore, b.overallScore, isAsc);
-        default: return 0;
-      }
-    });
-  }
-
-}
-
-function compareSort(a: number | string, b: number | string, isAsc: boolean) {
-  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
 
 function compareRank(a: number, b:number, isMinBetter: boolean = false)

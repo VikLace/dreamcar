@@ -24,7 +24,7 @@
 }
 
 #cars_table{
-  width: 100%;
+  width: 700px;
 }
 
 .mat-column-name {
@@ -41,7 +41,7 @@
 
 #cars-container{
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 #cars-filter-sidebar{
@@ -52,4 +52,9 @@
 #filter-button{
   margin-top: 20px;
   width: 100%;
+}
+
+#record-count-info{
+  color: #585858;
+  margin-top: 30px;
 }

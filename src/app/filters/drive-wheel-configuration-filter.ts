@@ -3,9 +3,9 @@ import { DriveWheelConfiguration } from "app/enums/drive-wheel-configuration.enu
 
 export class DriveWheelConfigurationFilter extends EnumFilter<DriveWheelConfiguration> {
 
-  constructor()
+  constructor(filterField: string)
   {
-    super(DriveWheelConfiguration);
+    super(filterField, DriveWheelConfiguration);
   }
 
   public getName(): string{

@@ -3,9 +3,9 @@ import { Transmission } from "app/enums/transmission.enum";
 
 export class TransmissionFilter extends EnumFilter<Transmission> {
 
-  constructor()
+  constructor(filterField: string)
   {
-    super(Transmission);
+    super(filterField, Transmission);
   }
 
   public getName(): string{

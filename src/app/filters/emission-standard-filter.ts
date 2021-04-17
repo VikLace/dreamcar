@@ -3,9 +3,9 @@ import { EmissionStandard } from "app/enums/emission-standard.enum";
 
 export class EmissionStandardFilter extends EnumFilter<EmissionStandard> {
 
-  constructor()
+  constructor(filterField: string)
   {
-    super(EmissionStandard);
+    super(filterField, EmissionStandard);
   }
 
   public getName(): string{
