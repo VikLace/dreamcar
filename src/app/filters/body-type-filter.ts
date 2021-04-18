@@ -1,5 +1,5 @@
 import { EnumFilter } from "app/filters/enum-filter";
-import { BodyType } from "app/enums/body-type.enum";
+import { BodyType, getBodyTypeName } from "app/enums/body-type.enum";
 
 export class BodyTypeFilter extends EnumFilter<BodyType> {
 
@@ -13,18 +13,7 @@ export class BodyTypeFilter extends EnumFilter<BodyType> {
   }
 
   public getValueName(value: number): string{
-    let result =
-      value == BodyType.Cabriolet ? "Kabriolets" :
-      value == BodyType.Coupe ? "Kupeja" :
-      value == BodyType.Crossover ? "Krosoveris" :
-      value == BodyType.Hatchback ? "Hečbeks" :
-      value == BodyType.Minivan ? "Minivens" :
-      value == BodyType.Pickup ? "Pikaps" :
-      value == BodyType.Sedan ? "Sedans" :
-      value == BodyType.Van ? "Vens" :
-      value == BodyType.Wagon ? "Universāls" :
-      "<nezinama vērtība>";
-    return result;
+    return getBodyTypeName(value);
   }
 
 }

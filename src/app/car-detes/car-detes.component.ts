@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { Component, OnInit, Inject } from '@angular/core';
 
 import { CarService } from 'app/services/car.service';
 import { Car } from 'app/interfaces/car.intf';
+import { CarDetesOverlayRef } from './car-detes-overlay-ref';
+import { CAR_DETES_DIALOG_DATA } from './car-detes-overlay.tokens';
+
+import { getBodyTypeName } from 'app/enums/body-type.enum';
+import { getDriveWheelConfigurationName } from 'app/enums/drive-wheel-configuration.enum';
+import { getEmissionStandardName } from 'app/enums/emission-standard.enum';
+import { getFuelTypeName } from 'app/enums/fuel-type.enum';
+import { getTransmissionName } from 'app/enums/transmission.enum';
 
 @Component({
   selector: 'app-car-detes',
@@ -13,20 +19,20 @@ import { Car } from 'app/interfaces/car.intf';
 export class CarDetesComponent implements OnInit {
 
   car: Car | undefined;
+  getBodyTypeName = getBodyTypeName;
+  getDriveWheelConfigurationName = getDriveWheelConfigurationName;
+  getEmissionStandardName = getEmissionStandardName;
+  getFuelTypeName = getFuelTypeName;
+  getTransmissionName = getTransmissionName;
 
   constructor(
-    private route: ActivatedRoute,
     private carService: CarService,
-    private location: Location
+    public dialogRef: CarDetesOverlayRef,
+    @Inject(CAR_DETES_DIALOG_DATA) public id: number
   ) { }
 
   ngOnInit(): void {
-    let id = +this.route.snapshot.paramMap.get('id')!;
-    this.carService.getCar(id).subscribe(c => this.car = c);
-  }
-
-  goBack(): void {
-    this.location.back();
+    this.carService.getCar(this.id).subscribe(c => this.car = c);
   }
 
 }

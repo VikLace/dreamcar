@@ -1,43 +1,162 @@
-<button (click)="goBack()">go back</button>
-<div *ngIf="car">
-  <!--img src="{{car.image}}" width="400" height="220"/>
-  <hr/-->
-  <h3>{{car.name}}</h3>
-  <hr/>
-  <div>
-  <h4>Body</h4>
-  <ul>
-    <li>body type: <strong>{{car.bodyType}}</strong></li>
-    <li>height: <strong>{{car.height}}</strong> cm</li>
-    <li>width: <strong>{{car.width}}</strong> cm</li>
-    <li>wheelbase: <strong>{{car.wheelbase}}</strong> cm</li>
-    <li>weight: <strong>{{car.weight}}</strong> kg</li>
-    <li>number of doors: <strong>{{car.numberOfDoors}}</strong></li>
-    <li>seating capacity: <strong>{{car.seatingCapacity}}</strong></li>
-    <li>cargo volume: <strong>{{car.cargoVolume}}</strong> l</li>
-  </ul>
-  </div>
-  <div>
-  <h4>Drive</h4>
-  <ul>
-    <li>drive wheel configuration: <strong>{{car.driveWheelConfiguration}}</strong></li>
-    <li>transmission: <strong>{{car.transmission}}</strong></li>
-    <li>number of forward gears: <strong>{{car.numberOfForwardGears}}</strong></li>
-    <li>acceleration time: <strong>{{car.accelerationTime}}</strong> sec</li>
-    <li>top speed: <strong>{{car.speed}}</strong> km/h</li>
-    <li>engine displacement: <strong>{{car.engineDisplacement}}</strong> cm3</li>
-    <li>engine power: <strong>{{car.enginePower}}</strong> HP</li>
-    <li>torque: <strong>{{car.torque}}</strong> Nm</li>
-  </ul>
-  </div>
-  <div>
-  <h4>Fuel</h4>
-  <ul>
-    <li>fuel type: <strong>{{car.fuelType}}</strong></li>
-    <li>fuel capacity: <strong>{{car.fuelCapacity}}</strong> l</li>
-    <li>fuel consumption: <strong>{{car.fuelConsumption}}</strong> l/100km</li>
-    <li>emissions CO2: <strong>{{car.emissionsCO2}}</strong> g/km</li>
-    <li>meets emission standard: <strong>{{car.meetsEmissionStandard}}</strong></li>
-  </ul>
-  </div>
-</div>
+<mat-card id="car-detes-card" *ngIf="car">
+  <mat-card-header>
+    <mat-card-title>{{car.name}}</mat-card-title>
+    <mat-card-subtitle>{{car.productionDate}}</mat-card-subtitle>
+  </mat-card-header>
+  <!--img src="{{car.image}}" width="400" height="220"/-->
+  <mat-card-content>
+    <mat-card id="performance_group" class="car-detes-group">
+      <mat-card-header>
+        <mat-card-title>Veiktspēja</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngIf="car.driveWheelConfiguration">
+          <div matLine>
+            <p>Piedziņa</p>
+            <p>{{getDriveWheelConfigurationName(car.driveWheelConfiguration)}}</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.transmission">
+          <div matLine>
+            <p>Pārnesumkārba</p>
+            <p>{{getTransmissionName(car.transmission)}}</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.numberOfForwardGears">
+          <div matLine>
+            <p>Pārnesumu skaits</p>
+            <p>{{car.numberOfForwardGears}}</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.accelerationTime">
+          <div matLine>
+            <p>Paātrinājums 0-100kms</p>
+            <p>{{car.accelerationTime}} s</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.speed">
+          <div matLine>
+            <p>Maksimālais ātrums</p>
+            <p>{{car.speed}} kms</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.engineDisplacement">
+          <div matLine>
+            <p>Dzinēja tilpums</p>
+            <p>{{car.engineDisplacement}} cm3</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.enginePower">
+          <div matLine>
+            <p>Dzinēja jauda</p>
+            <p>{{car.enginePower}} ZS</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.torque">
+          <div matLine>
+            <p>Griezes moments</p>
+            <p>{{car.torque}} Nm</p>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    </mat-card>
+    <mat-card id="environment_group" class="car-detes-group">
+      <mat-card-header>
+        <mat-card-title>Vide</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngIf="car.fuelType">
+          <div matLine>
+            <p>Degviela</p>
+            <p>{{getFuelTypeName(car.fuelType, true)}}</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.fuelCapacity">
+          <div matLine>
+            <p>Degvielas apjoms</p>
+            <p>{{car.fuelCapacity}} l</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.fuelConsumption">
+          <div matLine>
+            <p>Patēriņš</p>
+            <p>{{car.fuelConsumption}} l/100km</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.emissionsCO2">
+          <div matLine>
+            <p>CO2 emisija</p>
+            <p>{{car.emissionsCO2}} g/km</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.meetsEmissionStandard">
+          <div matLine>
+            <p>Standarts</p>
+            <p>{{getEmissionStandardName(car.meetsEmissionStandard)}}</p>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    </mat-card>
+    <mat-card id="body_group" class="car-detes-group">
+      <mat-card-header>
+        <mat-card-title>Vīrsbūve</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngIf="car.bodyType">
+          <div matLine>
+            <p>Tips</p>
+            <p>{{getBodyTypeName(car.bodyType)}}</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.height">
+          <div matLine>
+            <p>Augstums</p>
+            <p>{{car.height}} cm</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.width">
+          <div matLine>
+            <p>Platums</p>
+            <p>{{car.width}} cm</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.wheelbase">
+          <div matLine>
+            <p>Riteņu bāze</p>
+            <p>{{car.wheelbase}} cm</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.weight">
+          <div matLine>
+            <p>Svars</p>
+            <p>{{car.weight}} kg</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.numberOfDoors">
+          <div matLine>
+            <p>Durvju skaits</p>
+            <p>{{car.numberOfDoors}}</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.seatingCapacity">
+          <div matLine>
+            <p>Sēdvietu skaits</p>
+            <p>{{car.seatingCapacity}}</p>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="car.cargoVolume">
+          <div matLine>
+            <p>Ietilpība</p>
+            <p>{{car.cargoVolume}} l</p>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    </mat-card>
+  </mat-card-content>
+</mat-card>

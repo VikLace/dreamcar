@@ -1,5 +1,5 @@
 import { EnumFilter } from "app/filters/enum-filter";
-import { Transmission } from "app/enums/transmission.enum";
+import { Transmission, getTransmissionName } from "app/enums/transmission.enum";
 
 export class TransmissionFilter extends EnumFilter<Transmission> {
 
@@ -12,13 +12,8 @@ export class TransmissionFilter extends EnumFilter<Transmission> {
     return "Pārnesumkārba";
   }
 
-  public getValueName(value: number): string{
-    let result =
-      value == Transmission.Manual ? "Manuālā" :
-      value == Transmission.Automatic ? "Automātiskā" :
-      value == Transmission.Dualclutch ? "Divkāršā sajūga" :
-      "<nezinama vērtība>";
-    return result;
+  public getValueName(value: Transmission): string{
+    return getTransmissionName(value);
   }
 
 }

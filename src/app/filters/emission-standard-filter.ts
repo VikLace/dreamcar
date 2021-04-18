@@ -1,5 +1,5 @@
 import { EnumFilter } from "app/filters/enum-filter";
-import { EmissionStandard } from "app/enums/emission-standard.enum";
+import { EmissionStandard, getEmissionStandardName } from "app/enums/emission-standard.enum";
 
 export class EmissionStandardFilter extends EnumFilter<EmissionStandard> {
 
@@ -12,12 +12,8 @@ export class EmissionStandardFilter extends EnumFilter<EmissionStandard> {
     return "Emisijas standarts";
   }
 
-  public getValueName(value: number): string{
-    let result =
-      value == EmissionStandard.Euro5 ? "EURO 5" :
-      value == EmissionStandard.Euro6 ? "EURO 6" :
-      "<nezinama vērtība>";
-    return result;
+  public getValueName(value: EmissionStandard): string{
+    return getEmissionStandardName(value);
   }
 
 }

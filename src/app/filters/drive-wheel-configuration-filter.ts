@@ -1,5 +1,5 @@
 import { EnumFilter } from "app/filters/enum-filter";
-import { DriveWheelConfiguration } from "app/enums/drive-wheel-configuration.enum";
+import { DriveWheelConfiguration, getDriveWheelConfigurationName } from "app/enums/drive-wheel-configuration.enum";
 
 export class DriveWheelConfigurationFilter extends EnumFilter<DriveWheelConfiguration> {
 
@@ -9,16 +9,11 @@ export class DriveWheelConfigurationFilter extends EnumFilter<DriveWheelConfigur
   }
 
   public getName(): string{
-    return "Piedziņas riteņu konfigurācija";
+    return "Piedziņa";
   }
 
-  public getValueName(value: number): string{
-    let result =
-      value == DriveWheelConfiguration.Front ? "Priekšējā piedziņa" :
-      value == DriveWheelConfiguration.Rear ? "Aizmugures piedziņa" :
-      value == DriveWheelConfiguration.All ? "Pilnpiedziņa" :
-      "<nezinama vērtība>";
-    return result;
+  public getValueName(value: DriveWheelConfiguration): string{
+    return getDriveWheelConfigurationName(value);
   }
 
 }

@@ -1,6 +1,9 @@
 #cars-score-sidebar{
   width: 180px;
   margin: 30px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 .car-performance-score
@@ -25,18 +28,24 @@
 
 #cars_table{
   width: 700px;
-}
+  .mat-row {
+    transition: background-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    &:hover {
+      background-color: #EFEBF7;
+    }
+  }
 
-.mat-column-name {
-  width: 60% !important;
-}
+  .mat-column-name {
+    width: 60% !important;
+  }
 
-.mat-column-overallScore,
-.mat-column-performanceScore,
-.mat-column-environmentScore,
-.mat-column-capacityScore {
-  width: 10% !important;
-  //text-align: right;
+  .mat-column-overallScore,
+  .mat-column-performanceScore,
+  .mat-column-environmentScore,
+  .mat-column-capacityScore {
+    width: 10% !important;
+    //text-align: right;
+  }
 }
 
 #cars-container{

@@ -4,6 +4,8 @@ import { MatTableDataSource } from '@angular/material/table';
 
 import { Car } from "app/interfaces/car.intf";
 import { CarService } from 'app/services/car.service';
+import { CarDetesOverlay } from 'app/car-detes/car-detes-overlay';
+import { CarDetesOverlayRef } from 'app/car-detes/car-detes-overlay-ref';
 
 import { FuelType } from "app/enums/fuel-type.enum";
 import { PairWiseResult } from "app/enums/pairwise-result.enum";
@@ -36,7 +38,10 @@ export class CarsComponent implements AfterViewInit {
   /*minProductionYear: number = 0;
   maxProductionYear: number = 0;*/
 
-  constructor(private carService: CarService)
+  constructor(
+    private carService: CarService,
+    private carDetesOverlay: CarDetesOverlay
+  )
   {
       this.enumFilters.push(new BodyTypeFilter("bodyType"));
       this.enumFilters.push(new TransmissionFilter("transmission"));
@@ -76,6 +81,11 @@ export class CarsComponent implements AfterViewInit {
       /*this.minProductionYear = Math.min.apply(Math, c.map(function(o) { return o.productionDate || 99999; }))
       this.maxProductionYear = Math.max.apply(Math, c.map(function(o) { return o.productionDate || 0; }))*/
     });
+  }
+
+  showCarDetes(id: number)
+  {
+    let dialogRef: CarDetesOverlayRef = this.carDetesOverlay.open(id);
   }
 
   filterChanged(): void{
