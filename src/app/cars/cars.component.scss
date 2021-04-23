@@ -1,6 +1,9 @@
 #cars-score-sidebar{
   width: 180px;
   margin: 30px;
+  padding: 15px;
+  border: 3px outset coral;
+  border-radius: 12px;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -28,6 +31,10 @@
 
 #cars_table{
   width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
   .mat-row {
     transition: background-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     &:hover {
@@ -48,6 +55,26 @@
   }
 }
 
+#load_progress{
+  width: 700px;
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+#progress-value{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  bottom: 60px;
+}
+
+#progress-value-text{
+  font-size: 16px;
+  font-weight: bold;
+  color: #3f51b5;
+}
+
 #cars-container{
   display: flex;
   justify-content: center;
@@ -56,6 +83,9 @@
 #cars-filter-sidebar{
   width: 280px;
   margin: 30px;
+  padding: 15px;
+  border: 3px outset coral;
+  border-radius: 12px;
 }
 
 #filter-button{
