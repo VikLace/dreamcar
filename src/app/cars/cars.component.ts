@@ -3,12 +3,15 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
+import { fromWorker } from 'observable-webworker';
+import { Observable, of } from 'rxjs';
+
 import { Car } from "app/interfaces/car.intf";
 import { CarService } from 'app/services/car.service';
 import { CarDetesOverlay } from 'app/car-detes/car-detes-overlay';
 import { CarDetesOverlayRef } from 'app/car-detes/car-detes-overlay-ref';
 
-import { PairWiseComparison } from 'app/cars/pairwise';
+import { ComparisonResult } from "app/interfaces/comparison-result.intf";
 
 import { EnumFilter } from "app/filters/enum-filter";
 import { BodyTypeFilter } from "app/filters/body-type-filter";
@@ -121,7 +124,7 @@ export class CarsComponent implements AfterViewInit {
     if (sum == 0)
       return;
 
-    //todo: need a normal proportion calc, so sum is always 100
+    // TODO: need a normal proportion calc, so sum is always 100
     this.performance = Math.round(this.performance / sum * 100);
     this.environment = Math.round(this.environment / sum * 100);
     this.capacity = Math.round(this.capacity / sum * 100);
@@ -134,41 +137,48 @@ export class CarsComponent implements AfterViewInit {
     this.clearScoring();
 
     this.isLoading = true;
-    //this.loadingMode = "determinate";
-
-    var t0 = performance.now();
+    this.loadingMode = "determinate";
     var _this = this;
-    PairWiseComparison(this.carsDataSource.filteredData).subscribe({
-      next(num)
-      {
-        //_this.progressValue = num;
-        //console.log(_this.progressValue);
-      },
-      error(e)
-      {
-        _this.isLoading = false;
-        throw e;
-      },
-      complete()
-      {
-        //calculate overall score
-        _this.carsDataSource.data.forEach(r => {
-          r.overallScore =
-            r.capacityScore * _this.capacity/100 +
-            r.performanceScore * _this.performance/100 +
-            r.environmentScore * _this.environment/100;
-        });
+    var t0 = performance.now();
+    var receivedCount = 0;
+    var totalCount = this.carsDataSource.filteredData.length;
+    fromWorker<Car[], Car[]>(() => new Worker('app/workers/pair-wise.worker', { type: 'module'}), of(this.carsDataSource.filteredData))
+      .subscribe({
+        next(cars:Car[])
+        {
+          cars.forEach(car => {
+            var idx = _this.carsDataSource.filteredData.findIndex(x => x.id == car.id);
+            _this.carsDataSource.filteredData[idx].performanceScore = car.performanceScore;
+            _this.carsDataSource.filteredData[idx].capacityScore = car.capacityScore;
+            _this.carsDataSource.filteredData[idx].environmentScore = car.environmentScore;
+            _this.carsDataSource.filteredData[idx].overallScore =
+              car.capacityScore * _this.capacity/100 +
+              car.performanceScore * _this.performance/100 +
+              car.environmentScore * _this.environment/100;
+          });
 
-        var t1 = performance.now();
-        console.log("pairwise comparison took " + (t1 - t0) + " ms.");
+          // TODO: even out progress (first car takes n-1 comparisons, last car - 0)
+          receivedCount += cars.length;
+          _this.progressValue = Math.floor(receivedCount/totalCount*100);
+        },
+        error(e:any)
+        {
+          _this.isLoading = false;
+          console.log(e);
+        },
+        complete()
+        {
+          var t1 = performance.now();
+          console.log("pairwise comparison took " + (t1 - t0) + " ms.");
 
-        _this.isLoading = false;
+          _this.isLoading = false;
+          _this.progressValue = 0;
 
-        //changes sorting to overall score desc
-        _this.sort.active = "overallScore";
-        _this.sort.direction = "desc";
-        _this.sort.sortChange.emit();
-      }
+          //changes sorting to overall score desc
+          _this.sort.active = "overallScore";
+          _this.sort.direction = "desc";
+          _this.sort.sortChange.emit();
+        }
     });
   }
 

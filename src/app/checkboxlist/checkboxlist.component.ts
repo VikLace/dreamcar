@@ -33,4 +33,6 @@ export class CheckboxlistComponent {
     this.filterChanged.emit();
     this.updateAllComplete();
   }
+
+  // TODO: disable all when data loading
 }
