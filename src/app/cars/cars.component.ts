@@ -11,8 +11,6 @@ import { CarService } from 'app/services/car.service';
 import { CarDetesOverlay } from 'app/car-detes/car-detes-overlay';
 import { CarDetesOverlayRef } from 'app/car-detes/car-detes-overlay-ref';
 
-import { ComparisonResult } from "app/interfaces/comparison-result.intf";
-
 import { EnumFilter } from "app/filters/enum-filter";
 import { BodyTypeFilter } from "app/filters/body-type-filter";
 import { TransmissionFilter } from "app/filters/transmission-filter";
