@@ -140,6 +140,7 @@ export class CarsComponent implements AfterViewInit {
     var t0 = performance.now();
     var receivedCount = 0;
     var totalCount = this.carsDataSource.filteredData.length;
+    var totalCompareCount = totalCount * (totalCount - 1) / 2; //E(n-1)
     fromWorker<Car[], Car[]>(() => new Worker('app/workers/pair-wise.worker', { type: 'module'}), of(this.carsDataSource.filteredData))
       .subscribe({
         next(cars:Car[])
@@ -155,9 +156,13 @@ export class CarsComponent implements AfterViewInit {
               car.environmentScore * env/100;
           });
 
-          // TODO: even out progress (first car takes n-1 comparisons, last car - 0)
           receivedCount += cars.length;
-          _this.progressValue = Math.floor(receivedCount/totalCount*100);
+
+          //even out progress (first car takes n-1 comparisons, last car - 0)
+          //kth sum from the end = n*k - k(k+1)/2
+          let doneCompareCount = totalCount * receivedCount - receivedCount * (receivedCount + 1) / 2;
+
+          _this.progressValue = Math.ceil(doneCompareCount/totalCompareCount*100);
         },
         error(e:any)
         {
@@ -169,8 +174,10 @@ export class CarsComponent implements AfterViewInit {
           var t1 = performance.now();
           console.log("pairwise comparison took " + (t1 - t0) + " ms.");
 
-          _this.isLoading = false;
-          _this.progressValue = 0;
+          setTimeout(() => {
+            _this.isLoading = false;
+            _this.progressValue = 0;
+          }, 500); //wait half a second for progress spinner to catch up
 
           //changes sorting to overall score desc
           _this.sort.active = "overallScore";
