@@ -12,6 +12,7 @@ export class CheckboxlistComponent {
   allChecked: boolean = false;
 
   @Input() enumFilter!: EnumFilter<any>;
+  @Input() isLoading: boolean = false;
   @Output() filterChanged = new EventEmitter<void>();
 
   isFewSelected(): boolean {
