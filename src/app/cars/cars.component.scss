@@ -1,5 +1,5 @@
 #cars-score-sidebar{
-  width: 180px;
+  width: 250px;
   margin: 30px;
   padding: 15px;
   border: 3px outset coral;
@@ -7,6 +7,17 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+}
+
+.criteria-input{
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 10px;
+  text-align: right;
+  mat-label{
+    width:85px;
+    margin: auto;
+  }
 }
 
 .car-performance-score

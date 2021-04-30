@@ -35,9 +35,9 @@ export class CarsComponent implements AfterViewInit {
 
   displayedColumns: string[] = ["name", "performanceScore", "environmentScore", "capacityScore", "overallScore"];
 
-  performance!: number;
-  environment!: number;
-  capacity!: number;
+  performance: number = 50;
+  environment: number = 50;
+  capacity: number = 50;
 
   enumFilters: EnumFilter<any>[] = [];
 
@@ -114,22 +114,22 @@ export class CarsComponent implements AfterViewInit {
 
   generateClick()
   {
-    this.performance = this.performance || 0;
-    this.environment = this.environment || 0;
-    this.capacity = this.capacity || 0;
+    let perf = this.performance || 0;
+    let env = this.environment || 0;
+    let cap = this.capacity || 0;
 
-    let sum = this.performance + this.environment + this.capacity;
+    let sum = perf + env + cap;
     if (sum == 0)
       return;
 
     // TODO: need a normal proportion calc, so sum is always 100
-    this.performance = Math.round(this.performance / sum * 100);
-    this.environment = Math.round(this.environment / sum * 100);
-    this.capacity = Math.round(this.capacity / sum * 100);
-    sum = this.performance + this.environment + this.capacity - 100;
+    perf = Math.round(perf / sum * 100);
+    env = Math.round(env / sum * 100);
+    cap = Math.round(cap / sum * 100);
+    sum = perf + env + cap - 100;
     if (sum != 0)
     {
-      this.capacity -= sum;
+      cap -= sum;
     }
 
     this.clearScoring();
@@ -150,9 +150,9 @@ export class CarsComponent implements AfterViewInit {
             _this.carsDataSource.filteredData[idx].capacityScore = car.capacityScore;
             _this.carsDataSource.filteredData[idx].environmentScore = car.environmentScore;
             _this.carsDataSource.filteredData[idx].overallScore =
-              car.capacityScore * _this.capacity/100 +
-              car.performanceScore * _this.performance/100 +
-              car.environmentScore * _this.environment/100;
+              car.capacityScore * cap/100 +
+              car.performanceScore * perf/100 +
+              car.environmentScore * env/100;
           });
 
           // TODO: even out progress (first car takes n-1 comparisons, last car - 0)

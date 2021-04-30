@@ -40,21 +40,21 @@
     </div>
   </div>
   <div id="cars-score-sidebar">
-    <mat-form-field id="performance_input" appearance="outline">
+    <div class="criteria-input">
       <mat-label>Performance</mat-label>
-      <input [disabled]="isLoading" matInput type="number" [(ngModel)]="performance" min="0" max="100" placeholder="kritērija svars">
-      <!--mat-hint>Ievadiet skaitli no 0 līdz 100</mat-hint-->
-    </mat-form-field>
-    <mat-form-field id="environment_input" appearance="outline">
+      <mat-slider id="performance_input" [(ngModel)]="performance" [disabled]="isLoading" thumbLabel step="1" min="0" max="100"></mat-slider>
+    </div>
+
+    <div class="criteria-input">
       <mat-label>Environment</mat-label>
-      <input [disabled]="isLoading" matInput type="number" [(ngModel)]="environment" min="0" max="100" placeholder="kritērija svars">
-      <!--mat-hint>Ievadiet skaitli no 0 līdz 100</mat-hint-->
-    </mat-form-field>
-    <mat-form-field id="capacity_input" appearance="outline">
+      <mat-slider id="environment_input" [(ngModel)]="environment" [disabled]="isLoading" thumbLabel step="1" min="0" max="100"></mat-slider>
+    </div>
+
+    <div class="criteria-input">
       <mat-label>Capacity</mat-label>
-      <input [disabled]="isLoading" matInput type="number" [(ngModel)]="capacity" min="0" max="100" placeholder="kritērija svars">
-      <!--mat-hint>Ievadiet skaitli no 0 līdz 100</mat-hint-->
-    </mat-form-field>
+      <mat-slider id="capacity_input" [(ngModel)]="capacity" [disabled]="isLoading" thumbLabel step="1" min="0" max="100"></mat-slider>
+    </div>
+
     <button [disabled]="isLoading" id="generate-button" mat-raised-button (click)="generateClick()" type="button" name="button" color="primary">Calculate</button>
   </div>
 </div>

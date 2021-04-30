@@ -11,3 +11,34 @@
 html, body { height: 100%; }
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+#performance_input:not(.mat-slider-disabled){
+  .mat-slider-thumb, .mat-slider-track-fill, .mat-slider-thumb-label{
+    background-color: #e53831 !important;
+  }
+}
+
+#environment_input:not(.mat-slider-disabled){
+  .mat-slider-thumb, .mat-slider-track-fill, .mat-slider-thumb-label{
+    background-color: #31e538 !important;
+  }
+}
+
+#capacity_input:not(.mat-slider-disabled){
+  .mat-slider-thumb, .mat-slider-track-fill, .mat-slider-thumb-label{
+    background-color: #3831E5 !important;
+  }
+}
+
+.mat-slider-thumb-label {
+  transform: rotate(45deg) !important;
+  border-radius: 50% !important;
+  top: -15px !important;
+}
+.mat-slider-disabled .mat-slider-thumb-label{
+  display: flex !important;
+  background-color: rgb(158,158,158) !important;
+}
+.mat-slider-thumb-label-text {
+  opacity: 1 !important;
+}
