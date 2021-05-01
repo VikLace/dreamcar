@@ -74,7 +74,7 @@ export class CarsComponent implements AfterViewInit {
               return false;
             let values = tmp[1].split(",").map(x => +x);
             let carval = car[fieldName] as number;
-            if (fieldName = "productionDate")
+            if (fieldName == "productionDate")
             {
               if (carval < values[0] || carval > values[1])
                 return false;
@@ -115,11 +115,11 @@ export class CarsComponent implements AfterViewInit {
   filterChanged(): void{
     let fltr = this.enumFilters.map(f => f.getFilter()).filter(Boolean).join(';');
     this.ngxOptions = Object.assign({}, this.ngxOptions, {disabled: !this.filterYear});
-    console.log(this.ngxOptions);
     if (this.filterYear)
     {
       fltr += (fltr?";":"") + `productionDate=${this.minProductionYear},${this.maxProductionYear}`;
     }
+    console.log(fltr);
     this.carsDataSource.filter = fltr;
     this.resetPaging();
     if ((this.carsDataSource.filteredData.length > 0) && (this.carsDataSource.data[0].overallScore != undefined))
