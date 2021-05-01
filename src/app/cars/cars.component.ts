@@ -119,7 +119,6 @@ export class CarsComponent implements AfterViewInit {
     {
       fltr += (fltr?";":"") + `productionDate=${this.minProductionYear},${this.maxProductionYear}`;
     }
-    console.log(fltr);
     this.carsDataSource.filter = fltr;
     this.resetPaging();
     if ((this.carsDataSource.filteredData.length > 0) && (this.carsDataSource.data[0].overallScore != undefined))
