@@ -14,19 +14,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 #performance_input:not(.mat-slider-disabled){
   .mat-slider-thumb, .mat-slider-track-fill, .mat-slider-thumb-label{
-    background-color: #e53831 !important;
+    background-color: #df5b65 !important;
   }
 }
 
 #environment_input:not(.mat-slider-disabled){
   .mat-slider-thumb, .mat-slider-track-fill, .mat-slider-thumb-label{
-    background-color: #31e538 !important;
+    background-color: #65df5b !important;
   }
 }
 
 #capacity_input:not(.mat-slider-disabled){
   .mat-slider-thumb, .mat-slider-track-fill, .mat-slider-thumb-label{
-    background-color: #3831E5 !important;
+    background-color: #5b65df !important;
   }
 }
 
