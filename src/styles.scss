@@ -46,3 +46,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 #cars_table .cars_table-end_column .mat-sort-header-container{
   justify-content: center !important;
 }
+
+.ngx-slider .ngx-slider-pointer {
+  width: 20px !important;
+  height: 20px !important;
+  top: -8px !important;
+  border-radius: 50% !important;
+}
+.ngx-slider .ngx-slider-pointer::after {
+  display: none !important;
+}
+.ngx-slider:not([disabled]) .ngx-slider-pointer {
+  background-color: #3f51b5 !important;
+}
+.ngx-slider:not([disabled]) .ngx-slider-selection {
+  background: #3f51b5aa !important;
+}

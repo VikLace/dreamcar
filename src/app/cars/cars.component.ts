@@ -1,8 +1,10 @@
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Options as ngxOptions } from "@angular-slider/ngx-slider";
 
 import { fromWorker } from 'observable-webworker';
 import { Observable, of } from 'rxjs';
@@ -33,6 +35,7 @@ export class CarsComponent implements AfterViewInit {
   carsDataSource: MatTableDataSource<Car>;
 
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   displayedColumns: string[] = ["name", "performanceScore", "environmentScore", "capacityScore", "overallScore"];
 
@@ -42,8 +45,10 @@ export class CarsComponent implements AfterViewInit {
 
   enumFilters: EnumFilter<any>[] = [];
 
-  /*minProductionYear: number = 0;
-  maxProductionYear: number = 0;*/
+  filterYear = false;
+  minProductionYear: number = 0;
+  maxProductionYear: number = 0;
+  ngxOptions!: ngxOptions;
 
   constructor(
     private carService: CarService,
@@ -68,7 +73,13 @@ export class CarsComponent implements AfterViewInit {
             if (!car.hasOwnProperty(fieldName))
               return false;
             let values = tmp[1].split(",").map(x => +x);
-            if (!values.includes(car[fieldName] as number))
+            let carval = car[fieldName] as number;
+            if (fieldName = "productionDate")
+            {
+              if (carval < values[0] || carval > values[1])
+                return false;
+            }
+            else if (!values.includes(carval))
               return false;
           }
           return true;
@@ -86,9 +97,11 @@ export class CarsComponent implements AfterViewInit {
       data => {
         this.carsDataSource.data = data;
         this.carsDataSource.sort = this.sort;
+        this.carsDataSource.paginator = this.paginator;
         this.isLoading = false;
-        /*this.minProductionYear = Math.min.apply(Math, c.map(function(o) { return o.productionDate || 99999; }))
-        this.maxProductionYear = Math.max.apply(Math, c.map(function(o) { return o.productionDate || 0; }))*/
+        this.minProductionYear = Math.min.apply(Math, data.map(function(o) { return o.productionDate || 99999; }));
+        this.maxProductionYear = Math.max.apply(Math, data.map(function(o) { return o.productionDate || 0; }));
+        this.ngxOptions = {floor: this.minProductionYear, ceil: this.maxProductionYear, disabled: true};
       },
       error => this.isLoading = false
     );
@@ -100,12 +113,24 @@ export class CarsComponent implements AfterViewInit {
   }
 
   filterChanged(): void{
-    this.carsDataSource.filter = this.enumFilters.map(f => f.getFilter()).filter(Boolean).join(';');
+    let fltr = this.enumFilters.map(f => f.getFilter()).filter(Boolean).join(';');
+    this.ngxOptions = Object.assign({}, this.ngxOptions, {disabled: !this.filterYear});
+    console.log(this.ngxOptions);
+    if (this.filterYear)
+    {
+      fltr += (fltr?";":"") + `productionDate=${this.minProductionYear},${this.maxProductionYear}`;
+    }
+    this.carsDataSource.filter = fltr;
+    this.resetPaging();
     if ((this.carsDataSource.filteredData.length > 0) && (this.carsDataSource.data[0].overallScore != undefined))
     {
       this.snackBar.open('Datu kopa ir mainījusies. Aprēķinātās summas vairs nav aktuālas.', 'Pārrēķināt')
         .onAction().subscribe(() => { this.generateClick() });
     }
+  }
+
+  resetPaging(): void {
+    this.paginator.pageIndex = 0;
   }
 
   private clearScoring()
@@ -139,6 +164,7 @@ export class CarsComponent implements AfterViewInit {
     }
 
     this.clearScoring();
+    this.resetPaging();
 
     this.isLoading = true;
     this.loadingMode = "determinate";

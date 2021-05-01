@@ -39,6 +39,10 @@
     }
   }
 
+  .mat-row, .mat-footer-row {
+    height: 38px;
+  }
+
   .mat-column-name {
     width: 50% !important;
   }
@@ -107,4 +111,8 @@
 #record-count-info{
   color: #585858;
   margin-top: 30px;
+}
+
+#prod-year-filter{
+  margin-top: 20px;
 }

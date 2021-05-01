@@ -1,12 +1,15 @@
 <div id="cars-container">
   <div id="cars-filter-sidebar" *ngIf="enumFilters">
     <app-checkboxlist *ngFor="let i of enumFilters" [isLoading]="isLoading" [enumFilter]="i" (filterChanged)="filterChanged()"></app-checkboxlist>
-    <div id="record-count-info">
-      <em>ierakstu skaits: {{carsDataSource.filteredData.length}}/{{carsDataSource.data.length}}</em>
+    <div id="prod-year-filter" *ngIf="ngxOptions">
+      <mat-checkbox [disabled]="isLoading" [(ngModel)]="filterYear" (change)="filterChanged()">Ražošanas gads</mat-checkbox>
+      <ngx-slider *ngIf="!isLoading" [(value)]="minProductionYear" [(highValue)]="maxProductionYear" [options]="ngxOptions"
+        (userChange)="filterChanged()"></ngx-slider>
     </div>
   </div>
   <div id="cars_table">
-    <table mat-table [dataSource]="carsDataSource" matSort matSortActive="name" matSortDirection="asc">
+    <table mat-table [dataSource]="carsDataSource"
+      matSort matSortActive="name" matSortDirection="asc" (matSortChange)="resetPaging()">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
         <td mat-cell *matCellDef="let car"> {{car.name}} </td>
@@ -30,6 +33,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showCarDetes(row.id)" [hidden]="isLoading"></tr>
     </table>
+    <mat-paginator [length]="carsDataSource.filteredData.length" [pageSize]="20" [hidePageSize]="true"></mat-paginator>
     <div id="load_progress" *ngIf="isLoading">
       <div class="spinner-container">
           <mat-progress-spinner [mode]="loadingMode" [value]="progressValue"></mat-progress-spinner>

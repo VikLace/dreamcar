@@ -3,7 +3,7 @@
     [indeterminate]="isFewSelected()" (change)="setAll($event.checked)">
     {{enumFilter.getName()}}:
   </mat-checkbox>
-  <div *ngFor="let i of enumFilter.items">
+  <div class="filter-sub-checkbox-wrap" *ngFor="let i of enumFilter.items">
     <mat-checkbox class="filter-sub-checkbox" [disabled]="isLoading"
       [(ngModel)]="i.checked" (ngModelChange)="onChange($event.checked)">
       {{i.name}}
