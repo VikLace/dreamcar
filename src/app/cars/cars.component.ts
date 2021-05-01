@@ -2,6 +2,7 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { fromWorker } from 'observable-webworker';
 import { Observable, of } from 'rxjs';
@@ -46,7 +47,8 @@ export class CarsComponent implements AfterViewInit {
 
   constructor(
     private carService: CarService,
-    private carDetesOverlay: CarDetesOverlay
+    private carDetesOverlay: CarDetesOverlay,
+    private snackBar: MatSnackBar
   )
   {
       this.enumFilters.push(new BodyTypeFilter("bodyType"));
@@ -99,7 +101,11 @@ export class CarsComponent implements AfterViewInit {
 
   filterChanged(): void{
     this.carsDataSource.filter = this.enumFilters.map(f => f.getFilter()).filter(Boolean).join(';');
-    this.clearScoring();
+    if ((this.carsDataSource.filteredData.length > 0) && (this.carsDataSource.data[0].overallScore != undefined))
+    {
+      this.snackBar.open('Datu kopa ir mainījusies. Aprēķinātās summas vairs nav aktuālas.', 'Pārrēķināt')
+        .onAction().subscribe(() => { this.generateClick() });
+    }
   }
 
   private clearScoring()

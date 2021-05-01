@@ -24,6 +24,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 
@@ -51,6 +52,7 @@ import { PortalModule } from '@angular/cdk/portal';
     MatCardModule,
     MatProgressSpinnerModule,
     MatSliderModule,
+    MatSnackBarModule,
     OverlayModule,
     PortalModule,
     FormsModule
