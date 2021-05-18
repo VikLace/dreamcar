@@ -29,6 +29,10 @@ const compare = () => (source: Observable<Car[]>) =>
             comparePerformance(cars[i], cars[j]);
             compareEnvironment(cars[i], cars[j]);
           }
+          //result normalization
+          cars[i].capacityScore = cars[i].capacityScore / ((cars.length - 1) * PairWiseResult.Win);
+          cars[i].performanceScore = cars[i].performanceScore / ((cars.length - 1) * PairWiseResult.Win);
+          cars[i].environmentScore = cars[i].environmentScore / ((cars.length - 1) * PairWiseResult.Win);
           observer.next(cars[i]); //emit every fully calculated car
         }
       },

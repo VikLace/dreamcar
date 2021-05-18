@@ -16,19 +16,19 @@
       </ng-container>
       <ng-container matColumnDef="performanceScore" justify="end">
         <th class="cars_table-end_column" mat-header-cell *matHeaderCellDef mat-sort-header>Veiktspēja</th>
-        <td class="car-performance-score cars_table-score_col_text" mat-cell *matCellDef="let car">{{car.performanceScore | number : '1.0-0'}}</td>
+        <td class="car-performance-score cars_table-score_col_text" mat-cell *matCellDef="let car">{{car.performanceScore | percent : '1.0-0'}}</td>
       </ng-container>
       <ng-container matColumnDef="environmentScore" justify="end">
         <th class="cars_table-end_column" mat-header-cell *matHeaderCellDef mat-sort-header>Draudzīgums videi</th>
-        <td class="car-environment-score cars_table-score_col_text" mat-cell *matCellDef="let car">{{car.environmentScore | number : '1.0-0'}}</td>
+        <td class="car-environment-score cars_table-score_col_text" mat-cell *matCellDef="let car">{{car.environmentScore | percent : '1.0-0'}}</td>
       </ng-container>
       <ng-container matColumnDef="capacityScore" justify="end">
         <th class="cars_table-end_column" mat-header-cell *matHeaderCellDef mat-sort-header>Ietilpība</th>
-        <td class="car-capacity-score cars_table-score_col_text" mat-cell *matCellDef="let car">{{car.capacityScore | number : '1.0-0'}}</td>
+        <td class="car-capacity-score cars_table-score_col_text" mat-cell *matCellDef="let car">{{car.capacityScore | percent : '1.0-0'}}</td>
       </ng-container>
       <ng-container matColumnDef="overallScore" justify="end">
         <th class="cars_table-end_column" mat-header-cell *matHeaderCellDef mat-sort-header>Kopā</th>
-        <td class="cars_table-score_col_text" mat-cell *matCellDef="let car">{{car.overallScore | number : '1.0-0'}}</td>
+        <td class="cars_table-score_col_text" mat-cell *matCellDef="let car">{{car.overallScore | percent : '1.0-0'}}</td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showCarDetes(row.id)" [hidden]="isLoading"></tr>
