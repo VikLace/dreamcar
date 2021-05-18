@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Options as ngxOptions } from "@angular-slider/ngx-slider";
 
 import { fromWorker } from 'observable-webworker';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 
 import { Car } from "app/interfaces/car.intf";
 import { CarService } from 'app/services/car.service';
